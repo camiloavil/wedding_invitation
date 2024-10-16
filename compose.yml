@@ -1,0 +1,8 @@
+services:
+  nginx-weddingTesting:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./page/:/usr/share/nginx/html:ro
+
