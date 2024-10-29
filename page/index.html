@@ -30,8 +30,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Forum&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon.ico">
-<link rel="icon" sizes="16x16 32x32 64x64" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon.ico">
+<link rel="shortcut icon" href="img/faviconit/favicon.ico">
+<link rel="icon" sizes="16x16 32x32 64x64" href="img/faviconit/favicon.ico">
+<!--
 <link rel="icon" type="image/png" sizes="196x196" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-192.png">
 <link rel="icon" type="image/png" sizes="160x160" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-160.png">
 <link rel="icon" type="image/png" sizes="96x96" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-96.png">
@@ -47,13 +48,13 @@
 <link rel="apple-touch-icon" sizes="76x76" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-76.png">
 <link rel="apple-touch-icon" sizes="152x152" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-180.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="msapplication-TileImage" content="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/favicon-144.png">
 <meta name="msapplication-config" content="https://www.fixdate.io/modelo-invitacion/108/img/faviconit/browserconfig.xml">
+-->
+<meta name="msapplication-TileColor" content="#FFFFFF">
 </head>
 
 <body>
-  
     <!-- Loader -->
     <!-- START PRELOADER AREA-->
 <div class="preloader-area">
@@ -228,7 +229,7 @@
         <div class="anim-anillos"></div>
         <br>
         <h3>
-          Boda
+          Ceremonia
         </h3>
         <div class="info-col">
           <div class="info-box">
@@ -692,7 +693,11 @@
           <h5 class="modal-title">Código de Vestimenta</h5>
         </div>
         <div class="modal-body">
-          <p>Contenido Dress Code</p>
+          <p>
+            En este dia especial trae tu brillante presencia,<br>
+                  tu mejor sonrisa y un traje o vestido formal<br>
+                  Por favor no uses el color azul celeste ni blanco
+          </p>
         </div>
         <div class="modal-footer"></div>
       </div>
@@ -722,7 +727,8 @@
           <h5 class="modal-title">Tips y Notas</h5>
         </div>
         <div class="modal-body">
-          <p>Contenido Tips y Notas</p>
+              <p>No queremos que te pierdas ningún detalle.<br>
+                llega puntual.<br>Sentirás frío. Abrígate.</p>
         </div>
         <div class="modal-footer"></div>
       </div>
@@ -1123,94 +1129,74 @@
   <!-- Animacion Musica -->
   <script>
     let svgContainerMusica = document.querySelector('.anim-musica');
-
     let animMusica = bodymovin.loadAnimation({
       wrapper: svgContainerMusica,
       animType: 'svg',
       loop: true,
       path: _pathProducto + "img/img_musica.json"
     });
-
     animMusica.play();
   </script>
-
-
 
   <!-- Animacion Vestuario -->
   <script>
     let svgContainerVestuario = document.querySelector('.anim-vestuario');
-
     let animVestuario = bodymovin.loadAnimation({
       wrapper: svgContainerVestuario,
       animType: 'svg',
       loop: true,
       path: _pathProducto + "img/vestuario.json"
     });
-
     animVestuario.play();
   </script>
-
 
   <!-- Animacion Tips -->
   <script>
     let svgContainerTips = document.querySelector('.anim-tips');
-
     let animTips = bodymovin.loadAnimation({
       wrapper: svgContainerTips,
       animType: 'svg',
       loop: true,
       path: _pathProducto + "img/tips.json"
     });
-
     animTips.play();
   </script>
-
 
   <!-- Animacion canciones -->
   <script>
     let svgContainerFiesta = document.querySelector('.anim-fiesta');
-
     let animFiesta = bodymovin.loadAnimation({
       wrapper: svgContainerFiesta,
       animType: 'svg',
       loop: true,
       path: _pathProducto + "img/img_fiesta.json"
     });
-
     animFiesta.play();
   </script>
-
 
   <!-- Animacion regalos -->
   <script>
     let svgContainerRegalos = document.querySelector('.anim-regalos');
-
     let animRegalos = bodymovin.loadAnimation({
       wrapper: svgContainerRegalos,
       animType: 'svg',
       loop: true,
       path: _pathProducto + "img/img_regalo.json"
     });
-
     animRegalos.play();
   </script>
-
-
 
   <!-- Animacion instagram -->
   <script>
     let svgContainerInstagram = document.querySelector('.anim-instagram');
-
     let animInstagram = bodymovin.loadAnimation({
       wrapper: svgContainerInstagram,
       animType: 'svg',
       loop: true,
       path: _pathProducto + "img/img_instagram.json"
     });
-
     animInstagram.play();
   </script>
-
 
   <!-- Opciones carrusel galeria -->
   <script>
@@ -1246,59 +1232,40 @@
     });
   </script>
 
-
   <!-- Modal Confirmar asistencia -->
   <script>
     // Abrir modal
     $('body').on('click', 'a.confirmar-asistencia', function(e) {
-
       e.preventDefault();
-
       // Remuevo mensajes de error anteriores
       $("#error-form").remove();
-
       var evento = $(this).attr('data-evento');
-
       $('#eventoAsistencia').val(evento);
-
-
       if (evento == 'Fiesta') {
         var titleModalAsistencia = lang_titleModalAsistenciaFiesta;
         var rutaImgModalAsistencia = _pathProducto + 'img/img_circuloFiesta.svg';
       }
-
       if (evento == 'Ceremonia') {
         var titleModalAsistencia = lang_titleModalAsistenciaCeremonia;
         var rutaImgModalAsistencia = _pathProducto + 'img/img_circuloCeremonia.svg';
       }
-
       $('#modalAsistencia .modal-title').text(titleModalAsistencia);
       $('#modalAsistencia .img-top-modal img').attr('src', rutaImgModalAsistencia);
-
-
       $('#modalAsistencia').modal({
         backdrop: 'static'
       })
-
     });
-
 
     // Validacion de form.
     function isOkAsistencia() {
-
       // Remuevo mensajes de error anteriores
       $("#error-form").remove();
-
       // Variables necesarias para la validacion
       var flag = true;
       var err = '';
-
-
       // Variables del form para validar.
       var asistenteName = $.trim($("#nombreAsistente").val());
       var asistenteComentarios = $.trim($("#comentariosAsistente").val());
-
-
       // Nombre
       if (asistenteName == '') {
         flag = false;
@@ -1309,7 +1276,6 @@
           err = lang_caracteresNombreAsistencia;
         }
       }
-
       // Comentarios
       if (asistenteComentarios != '') {
         if (asistenteComentarios.length > 100) {
@@ -1317,47 +1283,31 @@
           err = lang_caracteresComentariosAsistencia;
         }
       }
-
       // Si hay error
       if (flag === false) {
-
         // Imprimo el error
         $('#formAsistencia').after('<span id="error-form">' + err + '</span>');
-
       }
-
       // Retorno el estado de la validacion
       return flag;
-
     }
-
 
     // Enviar asistencia
     $('body').on('click', '#sendAsistencia', function(e) {
-
       e.preventDefault();
-
-
       if (isOkAsistencia()) //Form bien validado
       {
-
         // Load and disabled buttom.
         $("#sendAsistencia").text(lang_informandoAsistencia + "...");
         $("#sendAsistencia").prop("disabled", true);
-
         // Obtengo el Form.
         var formulario = $("#formAsistencia")[0];
-
         // Obtengo los datos del formulario
         var datos = new FormData(formulario);
-
-
         // Visualizar como viajan los datos
         // for (var pair of datos.entries()) {
         //   console.log(pair[0] + ", " + pair[1]);
         // }
-
-
         // Envio con fetch los datos mediante POST
         fetch(_pathApp + "producto/fetchs/confirmar-asistencia.php", {
             method: "POST",
@@ -1366,90 +1316,63 @@
           // Promesas fetch
           .then(res => res.json())
           .then(data => {
-
             // Si recibo error 
             if (data.error === true) {
-
               $("#sendAsistencia").text(lang_confirmarAsistencia);
               $("#sendAsistencia").prop("disabled", false);
-
               // Imprimo el error
               $('#formAsistencia').after('<span id="error-form">' + data.desc + '</span>');
             }
-
             // Si no hay error 
             if (data.error === false) {
-
               $("#sendAsistencia").text(lang_confirmarAsistencia);
               $("#sendAsistencia").prop("disabled", false);
-
-
               // Oculto elementos del form y reseteo
               $('#formAsistencia')[0].reset();
               $('#modalAsistencia .formulario-content, #modalAsistencia .modal-footer, #modalAsistencia h5').hide();
 
-
-
               // Acomodo el css para centrar mensaje
               $('#modalAsistencia .modal-body').addClass('fix-height');
-
               // Muestro mensaje de exito
               $('#modalAsistencia .msj-content').html(
                 "<h5>" + lang_asistenciaMsjExito_1 + "</h5><p>" + lang_asistenciaMsjExito_2 + "</p>"
               ).show();
 
-
               // Cierro modal y vuelvo a activar form
               setTimeout(function() {
-
                 $('#modalAsistencia').modal('hide');
                 $('#modalAsistencia .formulario-content, #modalAsistencia .modal-footer, #modalAsistencia h5').show();
                 $('#modalAsistencia .msj-content').html('').hide();
                 $('#modalAsistencia .modal-body').removeClass('fix-height');
-
               }, 4000);
-
             }
-
           });
       }
-
-
     });
   </script>
-
 
   <!-- Cuenta regresiva -->
   <script>
     // Set the date we're counting down to
     var countDownDate = new Date(fechaCuentaRegresiva).getTime();
-
     // Update the count down every 1 second
     var x = setInterval(function() {
-
       // Get today's date and time
       var now = new Date().getTime();
-
       // Find the distance between now and the count down date
       var distance = countDownDate - now;
-
       // Time calculations for days, hours, minutes and seconds
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       // Display the result in the element with id="demo"
       // document.getElementById("reloj").innerHTML = days + " días " + hours + "hs " +
       //   minutes + "m " + seconds + "s ";
-
       $("#dias .number").text(days);
       $("#horas .number").text(hours);
       $("#minutos .number").text(minutes);
       $("#segundos .number").text(seconds);
-
-
-
       // If the count down is finished, write some text
       if (distance < 0) {
         clearInterval(x);
@@ -1460,44 +1383,29 @@
     }, 1000);
   </script>
 
-
   <!-- Modal sugerir cancion -->
   <script>
     // Abrir modal
     $('body').on('click', 'a.sugerir-cancion', function(e) {
-
       e.preventDefault();
-
       // Remuevo mensajes de error anteriores
       $("#error-form").remove();
-
       $('#modalSugerirCancion').modal({
         backdrop: 'static'
       })
-
     });
-
-
 
     // Validacion de form.
     function isOkSugerirCancion() {
-
-
       // Remuevo mensajes de error anteriores
       $("#error-form").remove();
-
       // Variables necesarias para la validacion
       var flag = true;
       var err = '';
-
-
       // Variables del form para validar.
       var sugerenciaName = $.trim($("#nombreSugerencia").val());
       var sugerenciaDescription = $.trim($("#descripcionSugerencia").val());
       var sugerenciaLink = $.trim($("#linkSugerencia").val());
-
-
-
       // Descripcion
       if (sugerenciaDescription == '') {
         flag = false;
@@ -1508,10 +1416,8 @@
           err = lang_caracteresCancionSugerencia;
         }
       }
-
       // Link
       if (sugerenciaLink != '') {
-
         if (!is_url(sugerenciaLink)) {
           flag = false;
           err = lang_linkIncorrecto;
@@ -1520,9 +1426,7 @@
           flag = false;
           err = lang_caracteresLinkSugerencia;
         }
-
       }
-
       // Nombre
       if (sugerenciaName == '') {
         flag = false;
@@ -1533,49 +1437,31 @@
           err = lang_caracteresNombreSugerencia;
         }
       }
-
-
       // Si hay error
       if (flag === false) {
-
         // Imprimo el error
         $('#formSugerirCancion').after('<span id="error-form">' + err + '</span>');
-
       }
-
       // Retorno el estado de la validacion
       return flag;
-
     }
-
-
 
     // Enviar sugerencia
     $('body').on('click', '#sendSugerenciaCancion', function(e) {
-
       e.preventDefault();
-
-
       if (isOkSugerirCancion()) //Form bien validado
       {
-
         // Load and disabled buttom.
         $("#sendSugerenciaCancion").text(lang_enviandoSugerencia + "...");
         $("#sendSugerenciaCancion").prop("disabled", true);
-
         // Obtengo el Form.
         var formulario = $("#formSugerirCancion")[0];
-
         // Obtengo los datos del formulario
         var datos = new FormData(formulario);
-
-
         // Visualizar como viajan los datos
         for (var pair of datos.entries()) {
           console.log(pair[0] + ", " + pair[1]);
         }
-
-
         // Envio con fetch los datos mediante POST
         fetch(_pathApp + "producto/fetchs/sugerir-cancion.php", {
             method: "POST",
@@ -1584,199 +1470,141 @@
           // Promesas fetch
           .then(res => res.json())
           .then(data => {
-
             // Si recibo error 
             if (data.error === true) {
-
               $("#sendSugerenciaCancion").text(lang_sugerirCancion);
               $("#sendSugerenciaCancion").prop("disabled", false);
-
               // Imprimo el error
               $('#formSugerirCancion').after('<span id="error-form">' + data.desc + '</span>');
             }
-
             // Si no hay error 
             if (data.error === false) {
-
               $("#sendSugerenciaCancion").text(lang_sugerirCancion);
               $("#sendSugerenciaCancion").prop("disabled", false);
-
-
               // Oculto elementos del form y reseteo
               $('#formSugerirCancion')[0].reset();
               $('#modalSugerirCancion .formulario-content, #modalSugerirCancion .modal-footer, #modalSugerirCancion h5').hide();
-
-
               // Acomodo el css para centrar mensaje
               $('#modalSugerirCancion .modal-body').addClass('fix-height');
-
-
               // Muestro mensaje de exito
-
               $('#modalSugerirCancion .msj-content').html(
                 "<h5>" + lang_sugerirCancionMsjExito_1 + "</h5><p>" + lang_sugerirCancionMsjExito_2 + "</p>"
               ).show();
-
-
               // Cierro modal y vuelvo a activar form
               setTimeout(function() {
-
                 $('#modalSugerirCancion').modal('hide');
                 $('#modalSugerirCancion .formulario-content, #modalSugerirCancion .modal-footer, #modalSugerirCancion h5').show();
                 $('#modalSugerirCancion .msj-content').html('').hide();
                 $('#modalSugerirCancion .modal-body').removeClass('fix-height');
-
               }, 4000);
-
             }
-
           });
       }
-
-
     });
   </script>
-
 
   <!-- Modal Vestuario -->
   <script>
     // Abrir modal
     $('body').on('click', 'a.modal-vestuario', function(e) {
-
       e.preventDefault();
-
       $('#modalVestuario').modal({
         backdrop: 'static'
       })
-
     });
   </script>
-
 
   <!-- Modal Tips -->
   <script>
     // Abrir modal
     $('body').on('click', 'a.modal-tips', function(e) {
-
       e.preventDefault();
-
       $('#modalTips').modal({
         backdrop: 'static'
       })
-
     });
   </script>
-
 
   <!-- Modal regalos -->
   <script>
     // Abrir modal
     $('body').on('click', 'a.modal-regalos', function(e) {
-
       e.preventDefault();
-
       $('#modalRegalos').modal({
         backdrop: 'static'
       })
-
     });
   </script>
-
-
 
   <!-- Modal como llegar -->
   <script>
     // Abrir modal
     $('body').on('click', 'a.modal-como-llegar', function(e) {
-
       e.preventDefault();
-
       var evento = $(this).attr('data-evento');
-
       if (evento == 'Fiesta') {
         var titleModalMapa = lang_titleModalMapaFiesta;
-
         var latitudMapa = latitudFiesta;
         var longitudMapa = longitudFiesta;
       }
-
       if (evento == 'Ceremonia') {
         var titleModalMapa = lang_titleModalMapaCeremonia;
-
         var latitudMapa = latitudCeremonia;
         var longitudMapa = longitudCeremonia;
       }
-
       // Cambio titulo
       $('#modalMapa .modal-title').text(titleModalMapa);
-
       // Genero el link para ampliar mapa
       $('.ampliar-mapa').attr('href', 'https://www.google.com/maps/search/?api=1&query=' + latitudMapa + ',' + longitudMapa);
-
       // Cambio mapa
       initMap(latitudMapa, longitudMapa);
-
       $('#modalMapa').modal({
         backdrop: 'static'
       })
-
     });
   </script>
-
-
 
   <!-- Instagram parallax -->
   <script>
     // Si el ancho es de Telefono
     if ($(window).width() < 768) {
-
       // Aceptar webp?
       if (support_format_webp()) {
         var imageInstagramParallax = 'img/instagram_mobile.webp';
       } else {
         var imageInstagramParallax = 'img/instagram_mobile.jpg';
       }
-
     } else {
-
       // Aceptar webp?
       if (support_format_webp()) {
         var imageInstagramParallax = 'img/instagram.webp';
       } else {
         var imageInstagramParallax = 'img/instagram.jpg';
       }
-
     }
-
     $('.instagram').parallax({
       imageSrc: _pathProducto + imageInstagramParallax
     });
   </script>
 
-
-  <!-- Api Maps-->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_3ZK1od6HtymslnbVFuzpUbMfrCRVqzM&callback=initMap&r=1016033889">
-  </script>
-
+<!-- Api Maps-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_3ZK1od6HtymslnbVFuzpUbMfrCRVqzM&callback=initMap&r=1016033889">
+</script>
 
   <script>
     // Config map
     function initMap(latitud = 0, longitud = 0) {
-
       var myLatLng = {
         lat: latitud,
         lng: longitud
       };
-
       var mapOptions = {
         // How zoomed in you want the map to start at (always required)
         zoom: 15,
         scrollwheel: false,
         disableDefaultUI: false,
-
         // The latitude and longitude to center the map (always required)
         center: new google.maps.LatLng(latitud, longitud),
-
         // How you would like to style the map.
         // This is where you would paste any style found on Snazzy Maps.
         styles: [{
@@ -1906,31 +1734,23 @@
         ]
 
       };
-
       var mapElement = document.getElementById('googleMap');
-
       var map = new google.maps.Map(mapElement, mapOptions);
-
       var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
       });
-
     }
   </script>
 
-
   <!-- AddEvent script -->
   <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
-
 
   <!-- AddEvent Settings -->
   <script type="text/javascript">
     window.addeventasync = function() {
       addeventatc.settings({
-
         css: false,
-
         appleical: {
           show: true,
           text: "Apple Calendar"
@@ -1963,37 +1783,24 @@
     };
   </script>
 
-
-
-  <!-- Idiomas segun config de invitacion -->
-  
-
-
-
-
-
+<!-- Idiomas segun config de invitacion -->
 <!-- Portada parallax -->
 <script>
   if (device == 'mobile' || $(window).width() < 768) {
-
     // Aceptar webp?
     if (support_format_webp()) {
       var imageParallax = 'img/pics/portada-mobile.webp';
     } else {
       var imageParallax = 'img/pics/portada-mobile.jpg';
     }
-
   } else {
-
     // Aceptar webp?
     if (support_format_webp()) {
       var imageParallax = 'img/pics/portada.webp';
     } else {
       var imageParallax = 'img/pics/portada.jpg';
     }
-
   }
-
   $('.portada-picture').parallax({
     imageSrc: _pathProducto + imageParallax
   });
