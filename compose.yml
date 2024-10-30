@@ -1,8 +1,9 @@
 services:
   nginx-weddingTesting:
     image: nginx:latest
+    restart: unless-stopped
     ports:
-      - "8080:80"
+      - "28080:80"
     volumes:
       - ./page/:/usr/share/nginx/html:ro
 
