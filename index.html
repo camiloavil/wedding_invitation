@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es-CO">
 
@@ -252,37 +251,6 @@
           </div>
         </div>
       </div>
-
-      <!--
-      <div class=" col-md-6 col-fiesta text-center">
-        <div class="anim-fiesta"></div>
-        <br>
-        <h3>Fiesta</h3>
-        <div class="info-col">
-          <div class="info-box">
-            <h6>Día</h6>
-            <p>Sábado 11 de Enero - 5:00pm</p>
-            <a href="#" class="boton addeventatc">
-              <span class="nameBtn">Agendar</span>
-              <span class="start">2025-1-11 14:00:01</span>
-              <span class="end">2025-1-11 23:00:01</span>
-              <span class="timezone">America/Bogota</span>
-              <span class="title">Boda de Karen y Camilo (Fiesta)</span>
-            </a>
-          </div>
-          <div class="info-box">
-            <h6>Lugar</h6>
-            <p>Centro Sinergia.</p>
-            <a href="#" data-evento="Fiesta" class="boton confirmar-asistencia">Confirmar asistencia</a>
-          </div>
-          <div class="info-box">
-            <h6>Dirección</h6>
-            <p>Finca Armenia chapalito, Pasto, Nariño</p>
-            <a href="#" data-evento="Fiesta" class="boton modal-como-llegar">¿Cómo llegar?</a>
-          </div>
-        </div>
-      </div>
-      -->
     </div>
   </div>
 </section>
@@ -601,17 +569,12 @@
               <div class="form-group">
                 <textarea id="comentariosAsistente" class="form-control" name="comentarios" id="" rows="2" placeholder="Ingrese algun dato importante, Ej: Soy vegetariano"></textarea>
               </div>
-              <input id="eventoAsistencia" type="hidden" name="evento" value="">
-              <input type="hidden" name="invitacion" value="">
-              <input type="hidden" name="token" value="">
-              <input type="hidden" name="lang" value="es">
-              <input type="hidden" name="country" value="co">
             </form>
           </div>
           <div class="msj-content d-flex flex-column justify-content-center"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" id="sendAsistencia" class="botondisabled" disabled>Próximamente Enviar</button>
+          <button type="button" id="sendAsistencia" class="boton">Enviar</button>
         </div>
       </div>
     </div>
@@ -1309,26 +1272,20 @@
         // Obtengo los datos del formulario
         var datos = new FormData(formulario);
         // Visualizar como viajan los datos
-        // for (var pair of datos.entries()) {
-        //   console.log(pair[0] + ", " + pair[1]);
-        // }
+        //for (var pair of datos.entries()) {
+        //  console.log(pair[0] + ", " + pair[1]);
+        //}
         // Envio con fetch los datos mediante POST
-        fetch(_pathApp + "producto/fetchs/confirmar-asistencia.php", {
+        const url_save_data = "https://script.google.com/macros/s/AKfycbx0jVdeR3mrseI9Oitf-WuuCj_wjjAbQuWmnTE8HWtAg3yuMhf8PDh-lW7JpNULgHkH/exec"
+        fetch(url_save_data, {
             method: "POST",
             body: datos
           })
           // Promesas fetch
           .then(res => res.json())
           .then(data => {
-            // Si recibo error 
-            if (data.error === true) {
-              $("#sendAsistencia").text(lang_confirmarAsistencia);
-              $("#sendAsistencia").prop("disabled", false);
-              // Imprimo el error
-              $('#formAsistencia').after('<span id="error-form">' + data.desc + '</span>');
-            }
-            // Si no hay error 
-            if (data.error === false) {
+            if (data.result === 'success'){
+              console.log("Save Sucesfully")
               $("#sendAsistencia").text(lang_confirmarAsistencia);
               $("#sendAsistencia").prop("disabled", false);
               // Oculto elementos del form y reseteo
@@ -1349,7 +1306,13 @@
                 $('#modalAsistencia .msj-content').html('').hide();
                 $('#modalAsistencia .modal-body').removeClass('fix-height');
               }, 4000);
-            }
+              }else{
+                console.log("Error on Someting")
+                $("#sendAsistencia").text(lang_confirmarAsistencia);
+                $("#sendAsistencia").prop("disabled", false);
+                // Imprimo el error
+                $('#formAsistencia').after('<span id="error-form">' + data.error + '</span>');
+              }
           });
       }
     });
